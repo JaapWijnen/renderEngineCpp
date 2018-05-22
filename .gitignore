@@ -9,6 +9,7 @@
 
 # unignore the makefile
 !Makefile
+!LICENSE
 
 
 
