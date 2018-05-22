@@ -29,3 +29,6 @@ on Linux these might be different such as `#include <GL/glew.h>`
 
 - to build `make`
 - to run `make run`
+
+
+*Written by [Jaap Wijnen](https://github.com/JaapWijnen/renderEngineCpp)*
