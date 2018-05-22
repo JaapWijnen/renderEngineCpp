@@ -1,3 +1,17 @@
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+
+# The above makes sure all files without extensions are ignored (in order to prevent the binary from being added to the repository)
+
+# unignore the makefile
+!Makefile
+
+
+
 # Prerequisites
 *.d
 
@@ -30,3 +44,5 @@
 *.exe
 *.out
 *.app
+
+.DS_Store
