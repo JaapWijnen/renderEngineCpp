@@ -19,7 +19,6 @@ Cube::Cube()
 {
 }
 
-
 Cube::~Cube()
 {
 }
@@ -100,7 +99,7 @@ void Cube::initVertices() {
   //Set all vertex colors to magenta
   int i = 0;
   for (i=0; i < 36; i++) {
-    _vertexData[i].setColor(255, 255, 255, 255);
+    _vertexData[i].setColor(_color);
   }
   for (i = 0; i < 6; i++) {
     //_vertexData[i].setColor(255, 0, 0, 255);

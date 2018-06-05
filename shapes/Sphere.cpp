@@ -126,7 +126,7 @@ void Sphere::initVertices() {
   //Set all vertex colors to magenta
   int i = 0;
   for (int i=0; i < _vertexCount; i++) {
-    _vertexData[i].setColor(255, 255, 255, 255);
+    _vertexData[i].setColor(_color);
     glm::vec3 pos = _vertexData[i].getPosition();
     pos = normalize(pos);
     _vertexData[i].setPosition(pos.x, pos.y, pos.z);

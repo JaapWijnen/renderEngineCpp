@@ -14,6 +14,7 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "Node.h"
+#include "Cube.h"
 
 enum class ProgramState {
   RUN,

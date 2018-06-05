@@ -45,7 +45,7 @@ void Quad::initVertices() {
 
       for (int k=0; k<6; k++) {
         _vertexData[6*(i+j*_subdivs)+k].setNormal(0, 0, 1);
-        _vertexData[6*(i+j*_subdivs)+k].setColor(255, 255, 255, 255);
+        _vertexData[6*(i+j*_subdivs)+k].setColor(_color);
       }
     }
   }

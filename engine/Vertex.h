@@ -60,6 +60,10 @@ struct Vertex {
     color.a = a;
   }
 
+  void setColor(ColorRGBA8 newColor) {
+    color = newColor;
+  }
+
   void setUV(float u, float v) {
     uv.u = u;
     uv.v = v;

@@ -47,6 +47,14 @@ void MainProgram::run() {
   _rootNode = Node();
   _rootNode.setName("root");
 
+
+  Cube *cube = new Cube();
+  cube->setName("cube");
+  cube->setColor(ColorRGBA8(255, 0, 0, 255));
+  cube->init();
+
+  _rootNode.addChild(cube);
+
   gameLoop();
 }
 
@@ -160,8 +168,6 @@ void MainProgram::gameLoop() {
     _camera.setPosition(cameraPosition);
     _camera.setRotation(cameraRotation);
 
-    _camera.update();
-
     drawGame();
 
     _fps = fpsLimiter.end();
@@ -220,7 +226,7 @@ void MainProgram::drawGame() {
   glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
 
   // render rootNode and all it's children (from camera perspective)
-  _rootNode.render(_textureProgram, _camera.getCameraMatrix());
+  _rootNode.render(_textureProgram, _camera.getViewMatrix());
 
   // Unbind the program
   _textureProgram.unuse();

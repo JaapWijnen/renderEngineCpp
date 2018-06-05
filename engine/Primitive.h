@@ -21,9 +21,19 @@ public:
   void init();
   virtual void initVertices();
 
+  void setColor(ColorRGBA8 newColor) { _color = newColor; }
+  void setColor(GLubyte r, GLubyte g, GLubyte b, GLubyte a) {
+    _color.r = r;
+    _color.g = g;
+    _color.b = b;
+    _color.a = a;
+  }
+
 protected:
   int _vertexCount;
   Vertex* _vertexData;
+
+  ColorRGBA8 _color;
 
 private:
   GLuint _vbo;

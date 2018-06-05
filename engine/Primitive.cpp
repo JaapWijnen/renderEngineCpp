@@ -13,7 +13,7 @@
 
 #include "Errors.h"
 
-Primitive::Primitive() : _vbo(0), _vao(0) {
+Primitive::Primitive() : _vbo(0), _vao(0), _color(255, 255, 255, 255) {
 
 }
 
