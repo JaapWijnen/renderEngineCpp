@@ -7,18 +7,22 @@
 //  Licensed under the terms of the MIT license
 //
 
-#include <SDL2/SDL.h>
-
-#ifdef __APPLE__
-  #include <OpenGL/gl3.h>
-#elif __linux__
-  #include <GL/glew.h>
-#endif
+#include <GLFW/glfw3.h>
 
 #include "Engine.h"
 
 int Engine::init() {
-  //Initialize SDL
+
+  glfwInit();
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+  #ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
+  #endif
+
+  /* //Initialize SDL
   SDL_Init(SDL_INIT_EVERYTHING);
 
   //Apple specific OpenGL setup
@@ -31,7 +35,7 @@ int Engine::init() {
 
   //Tell SDL that we want a double buffered window so we dont get
   //any flickering
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);*/
 
   return 0;
 }

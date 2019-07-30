@@ -9,7 +9,7 @@
 
 #include "MainProgram.h"
 
-#include <SDL2/SDL.h>
+#include <GLFW/glfw3.h>
 
 #include <random>
 #include <ctime>
@@ -72,7 +72,7 @@ void MainProgram::initSystems() {
   // Set up the shaders
   initShaders();
 
-  SDL_SetRelativeMouseMode(SDL_TRUE);
+  //SDL_SetRelativeMouseMode(SDL_TRUE);
 
   // Set up the camera
   _camera.init(_screenWidth, _screenHeight, 60.0f);
@@ -107,13 +107,13 @@ void MainProgram::gameLoop() {
   const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS;
   const float MAX_DELTA_TIME = 1.0f;
 
-  float previousTicks = SDL_GetTicks();
+  float previousTicks = glfwGetTime();
 
   // Main loop
   while (_programState == ProgramState::RUN) {
     fpsLimiter.begin();
 
-    float newTicks = SDL_GetTicks();
+    float newTicks = glfwGetTime();
     float frameTime = newTicks - previousTicks;
     previousTicks = newTicks;
     float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
@@ -129,7 +129,7 @@ void MainProgram::gameLoop() {
     while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS) {
       float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
 
-      if (_inputManager.isKeyDown(SDLK_w)) {
+      /*if (_inputManager.isKeyDown(SDLK_w)) {
         cameraPosition.x += sin(-cameraRotation.y) * CAMERA_SPEED * deltaTime;
         cameraPosition.z += cos(-cameraRotation.y) * CAMERA_SPEED * deltaTime;
       } else if (_inputManager.isKeyDown(SDLK_s)) {
@@ -155,7 +155,7 @@ void MainProgram::gameLoop() {
         cameraRotation.y -= CAMERA_SPEED * deltaTime;
       } else if (_inputManager.isKeyDown(SDLK_f)) {
         cameraRotation.y += CAMERA_SPEED * deltaTime;
-      }
+      }*/
 
       glm::vec2 deltaMouse = _inputManager.getDeltaMouse();
       cameraRotation.y += MOUSE_SENSITIVITY * deltaMouse.x;
@@ -176,6 +176,7 @@ void MainProgram::gameLoop() {
 }
 
 void MainProgram::processInput() {
+  /*
   if(_inputManager.isKeyDown(SDLK_ESCAPE)){
      _programState = ProgramState::EXIT;
   }
@@ -202,7 +203,7 @@ void MainProgram::processInput() {
         _inputManager.releaseKey(evnt.button.button);
         break;
     }
-  }
+  }*/
 }
 
 void MainProgram::drawGame() {
@@ -233,4 +234,5 @@ void MainProgram::drawGame() {
 
   // Swap our buffer and draw everything to the screen!
   _window.swapBuffer();
+  
 }

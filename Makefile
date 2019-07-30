@@ -1,18 +1,12 @@
 UNAME = $(shell uname -s)
 
-SDL_CONFIG = /usr/local/bin/sdl2-config
-
 ifeq ($(UNAME), Linux)
 OPENGL_INC=
 OPENGL_LIB= -lGLEW -lGL
-SDL_INC= `${SDL_CONFIG} --cflags`
-SDL_LIB= `${SDL_CONFIG} --libs`
 endif
 ifeq ($(UNAME), Darwin)
 OPENGL_INC=
-OPENGL_LIB= -framework OpenGL
-SDL_INC=`${SDL_CONFIG} --cflags`
-SDL_LIB=`${SDL_CONFIG} --libs`
+OPENGL_LIB= -lglfw -framework OpenGL
 endif
 
 ENGINE_SRC = $(wildcard engine/*.cpp)
@@ -32,8 +26,8 @@ EXEC = render-engine
 
 CC= g++
 COMPILER_FLAGS= -g -std=c++11
-INCLUDE= $(LOC_DIR_INC) $(SDL_INC) $(OPENGL_INC)
-LIBS= $(SDL_LIB) $(OPENGL_LIB) -L./lib -l$(ENGINE_NAME)
+INCLUDE= $(LOC_DIR_INC) $(OPENGL_INC)
+LIBS= $(OPENGL_LIB) -L./lib -l$(ENGINE_NAME)
 
 all: ${EXEC}
 

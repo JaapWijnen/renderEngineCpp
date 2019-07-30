@@ -9,13 +9,7 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
-
-#ifdef __APPLE__
-  #include <OpenGL/gl3.h>
-#elif __linux__
-  #include <GL/glew.h>
-#endif
+#include <GLFW/glfw3.h>
 
 #include <string>
 
@@ -34,6 +28,6 @@ public:
   int getScreenWidth() { return _screenWidth; }
   int getScreenHeight() { return _screenHeight; }
 private:
-  SDL_Window* _sdlWindow;
+  GLFWwindow* _glfwWindow;
   int _screenWidth, _screenHeight;
 };

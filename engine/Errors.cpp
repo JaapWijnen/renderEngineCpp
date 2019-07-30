@@ -7,7 +7,7 @@
 //  Licensed under the terms of the MIT license
 //
 
-#include <SDL2/SDL.h>
+#include <GLFW/glfw3.h>
 
 #include "Errors.h"
 
@@ -20,6 +20,6 @@ void fatalError(std::string errorString) {
   std::cout << "Enter any key to quit...";
   int tmp;
   std::cin >> tmp;
-  SDL_Quit();
+  glfwTerminate();
   exit(69);
 }
